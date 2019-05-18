@@ -72,7 +72,7 @@ decltype(auto) ThreadPool::enqueue(F&& f, Args&&... args) {
     {
         std::unique_lock<std::mutex> lock(queue_mutex);
         if (stop)
-            throw std::runtime_error("enqueue on stopped ThreadPool");
+            throw std::runtime_error("Enqueue to stopped ThreadPool");
 
         tasks.emplace(std::move(task));
     }
